@@ -6,7 +6,6 @@ import Map from './components/Map/Map';
 import List from './components/List/List';
 import { getPlacesData } from './api/traveladvisor';
 
-
 const App = () => {
   const [type, setType] = useState('restaurants');
   const [rating, setRating] = useState('');
@@ -28,20 +27,30 @@ const App = () => {
   }, []);
 
   useEffect(() => {
-    const filtered = places.filter((place) => Number(place.rating) > rating);
-
-    setFilteredPlaces(filtered);
-  }, [rating,places]);
+    if (places.length > 0) {
+      const filtered = places.filter((place) => Number(place.rating) > rating);
+      setFilteredPlaces(filtered);
+      console.log(filteredPlaces);
+    }
+  }, [rating, places]);
 
   useEffect(() => {
     if (bounds) {
       setIsLoading(true);
-
       getPlacesData(type, bounds.sw, bounds.ne)
         .then((data) => {
-          setPlaces(data.filter((place) => place.name && place.num_reviews > 0));
-          setFilteredPlaces([]);
-          setRating('');
+          if (data) {
+            setPlaces(data.filter((place) => place.name && place.num_reviews > 0));
+          } else {
+            setPlaces([]);
+          }
+          // setFilteredPlaces([]);
+          // setRating('');
+          setIsLoading(false);
+        })
+        .catch((error) => {
+          console.error("Error fetching data:", error);
+          setPlaces([]);
           setIsLoading(false);
         });
     }
@@ -52,7 +61,6 @@ const App = () => {
   const onPlaceChanged = () => {
     const lat = autocomplete.getPlace().geometry.location.lat();
     const lng = autocomplete.getPlace().geometry.location.lng();
-
     setCoords({ lat, lng });
   };
 

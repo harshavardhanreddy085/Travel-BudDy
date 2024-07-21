@@ -2,6 +2,7 @@ import React from 'react';
 import { Autocomplete } from '@react-google-maps/api';
 import { AppBar, Toolbar, Typography, InputBase, Box } from '@mui/material';
 import SearchIcon from '@mui/icons-material/Search';
+
 import useStyles from './style.js';
 
 const Header = ({ onPlaceChanged, onLoad }) => {
@@ -11,7 +12,7 @@ const Header = ({ onPlaceChanged, onLoad }) => {
     <AppBar position="static">
       <Toolbar className={classes.toolbar}>
         <Typography variant="h5" className={classes.title}>
-          Travel Advisor
+          Travel BudDy
         </Typography>
         <Box display="flex">
           <Typography variant="h6" className={classes.title}>

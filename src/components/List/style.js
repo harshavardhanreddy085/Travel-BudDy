@@ -4,14 +4,14 @@ export default makeStyles((theme) => ({
   formControl: {
     margin: theme.spacing(1),
     minWidth: 120,
-    marginBottom: '10px', // Reduced margin bottom
-    width: '100%', // Ensures full width within Grid item
+    marginBottom: '10px', 
+    width: '100%', 
   },
   formControlSmall: {
     margin: theme.spacing(1),
     minWidth: 100,
-    marginBottom: '10px', // Reduced margin bottom
-    width: '100%', // Ensures full width within Grid item
+    marginBottom: '10px',
+    width: '100%',
   },
   formControlContainer: {
     display: 'flex',

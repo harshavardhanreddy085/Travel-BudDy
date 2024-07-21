@@ -9,8 +9,8 @@ export default makeStyles((theme) => ({
         },
       },
       search: {
-    display: 'flex', // Use flexbox layout
-    alignItems: 'center', // Center items vertically
+    display: 'flex', 
+    alignItems: 'center', 
     position: 'relative',
     borderRadius: theme.shape.borderRadius,
     backgroundColor: alpha(theme.palette.common.white, 0.15),
@@ -38,7 +38,6 @@ export default makeStyles((theme) => ({
   },
   inputInput: {
     padding: theme.spacing(1, 1, 1, 0),
-    // vertical padding + font size from searchIcon
     paddingLeft: `calc(1em + ${theme.spacing(4)}px)`,
     transition: theme.transitions.create('width'),
     width: '100%',

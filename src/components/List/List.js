@@ -1,9 +1,9 @@
-import React, {  useEffect, useRef } from 'react';
+import React, { useEffect, useRef } from 'react';
 import { CircularProgress, Grid, Typography, InputLabel, MenuItem, FormControl, Select } from '@mui/material';
 import useStyles from './style.js';
 import Places from '../Places/Places';
 
-const List = ({ places, isLoading, childClicked, type, setType, rating, setRating }) => {
+const List = ({ places = [], isLoading, childClicked, type, setType, rating, setRating }) => {
   const classes = useStyles();
   const elRefs = useRef([]);
 
@@ -45,7 +45,7 @@ const List = ({ places, isLoading, childClicked, type, setType, rating, setRatin
           </Grid>
 
           <Grid container spacing={3} className={classes.list}>
-            {places?.map((place, i) => (
+            {places.map((place, i) => (
               <Grid ref={elRefs.current[i]} key={i} item xs={12}>
                 <Places selected={Number(childClicked) === i} refProp={elRefs.current[i]} place={place} />
               </Grid>
